@@ -1,7 +1,7 @@
 package ru.job4j.oop;
 
-import org.junit.jupiter.api.Test;
-import static org.assertj.core.api.Assertions.assertThat;
+import org.assertj.core.api.Assertions;
+import org.junit.Test;
 
 public class BatteryTest {
 
@@ -11,7 +11,7 @@ public class BatteryTest {
         Battery another = new Battery(50);
         charger.exchange(another);
         int expected = 80;
-        assertThat(another.about()).isEqualTo("My charge: " + expected + "%");
+        Assertions.assertThat(another.about()).isEqualTo("My charge: " + expected + "%");
     }
 
     @Test
@@ -20,7 +20,7 @@ public class BatteryTest {
         Battery another = new Battery(20);
         charger.exchange(another);
         int expected = 0;
-        assertThat(charger.about()).isEqualTo("My charge: " + expected + "%");
+        Assertions.assertThat(charger.about()).isEqualTo("My charge: " + expected + "%");
     }
 
     @Test
@@ -29,6 +29,6 @@ public class BatteryTest {
         Battery another = new Battery(0);
         charger.exchange(another);
         int expected = 95;
-        assertThat(another.about()).isEqualTo("My charge: " + expected + "%");
+        Assertions.assertThat(another.about()).isEqualTo("My charge: " + expected + "%");
     }
 }
