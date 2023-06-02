@@ -1,5 +1,8 @@
 package ru.job4j.oop;
 
+import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
+
 public class Triangle {
 
     private Point first;
@@ -13,11 +16,11 @@ public class Triangle {
     }
 
     public double semiPerimeter(double a, double b, double c) {
-        return -1;
+        return (a + b + c) / 2;
     }
 
     public boolean exist(double ab, double ac, double bc) {
-        return false;
+        return ab + ac > bc && ab + bc > ac && bc + ac > ab;
     }
 
     public double area() {
@@ -27,7 +30,7 @@ public class Triangle {
         double bc = second.distance(third);
         if (this.exist(ab, ac, bc)) {
             double p = semiPerimeter(ab, ac, bc);
-            rsl = -1;
+            rsl = sqrt(p * (p - ab) * p * (p - bc) * p * (p - ac));
         }
         return rsl;
     }
