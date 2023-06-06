@@ -1,7 +1,8 @@
-package ru.job4j.oop;
+package ruoop;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
+import ru.job4j.oop.Battery;
 
 public class BatteryTest {
 

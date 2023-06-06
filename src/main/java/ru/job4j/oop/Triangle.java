@@ -1,6 +1,5 @@
 package ru.job4j.oop;
 
-import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 
 public class Triangle {
@@ -32,6 +31,6 @@ public class Triangle {
             double p = semiPerimeter(ab, ac, bc);
             rsl = sqrt(p * (p - ab) * p * (p - bc) * p * (p - ac));
         }
-        return rsl;
+            return rsl;
     }
 }
