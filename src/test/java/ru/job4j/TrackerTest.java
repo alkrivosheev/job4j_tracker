@@ -1,7 +1,6 @@
 package ru.job4j;
 
 import org.junit.Test;
-import ru.job4j.oop.Item;
 import ru.job4j.oop.Tracker;
 
 import static org.hamcrest.MatcherAssert.assertThat;
