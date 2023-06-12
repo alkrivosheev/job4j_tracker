@@ -38,4 +38,9 @@ public class Product {
         Product product = (Product) o;
         return count == product.count && product.name != null && Objects.equals(name, product.name);
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(count, name);
+    }
 }
