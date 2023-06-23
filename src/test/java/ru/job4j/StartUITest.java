@@ -38,6 +38,6 @@ public class StartUITest {
         Item item = new Item("new item");
         tracker.add(item);
         tracker.delete(item.getId());
-        assertThat(tracker.findByName(item.getName())).isEmpty();
+        assertThat(tracker.findById(item.getId())).isNull();
     }
 }
