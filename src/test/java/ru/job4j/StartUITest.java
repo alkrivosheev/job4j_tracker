@@ -37,10 +37,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item = new Item("new item");
         tracker.add(item);
-        String[] answers = {
-                String.valueOf(item.getId()),
-                "delete item"
-        };
+        String[] answers = {String.valueOf(item.getId())};
         tracker.delete(new StubInput(answers).askInt("delete item"));
         assertThat(tracker.findById(item.getId())).isNull();
     }
