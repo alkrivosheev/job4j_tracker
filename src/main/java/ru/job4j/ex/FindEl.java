@@ -12,7 +12,6 @@ public class FindEl {
         if (rsl == -1) {
             throw new ElementNotFoundException();
         }
-        /* цикл fori, поскольку нам надо найти индекс искомого элемента в массиве */
         return rsl;
     }
 
