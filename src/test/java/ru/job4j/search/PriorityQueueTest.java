@@ -39,6 +39,6 @@ public class PriorityQueueTest {
         queue.put(new Task("i", 1));
         queue.put(new Task("j", 8));
         Task result = queue.take();
-        assertThat(result.getDesc()).isEqualTo("urgent");
+        assertThat(result.getDesc()).isEqualTo("d");
     }
 }
