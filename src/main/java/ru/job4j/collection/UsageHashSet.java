@@ -6,10 +6,12 @@ public class UsageHashSet {
     public static void main(String[] args) {
         HashSet<String> autos = new HashSet<>();
         autos.add("Lada");
+        autos.add("Toyota");
         autos.add("BMW");
         autos.add("Volvo");
+        autos.add("Lada");
         autos.add("Toyota");
-        for (String brandName:autos) {
+        for (String brandName : autos) {
             System.out.println(brandName);
         }
     }
