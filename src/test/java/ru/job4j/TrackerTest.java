@@ -114,7 +114,7 @@ public class TrackerTest {
                 new Item(8, "Name_3"),
                 new Item(4, "Name_8")
         );
-        assertThat(items.toString()).isEqualTo(expected.toString());
+        assertThat(items).isEqualTo(expected);
 
     }
 
@@ -131,6 +131,6 @@ public class TrackerTest {
                 new Item(8, "Name_3"),
                 new Item(2, "Name_1")
         );
-        assertThat(items.toString()).isEqualTo(expected.toString());
+        assertThat(items).isEqualTo(expected);
     }
 }
