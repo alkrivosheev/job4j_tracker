@@ -27,6 +27,7 @@ public class CollectionTask {
         }
         System.out.println(rez);
     }
+
     public static void main(String[] args) {
         int[] mass1 = {1, 2, 3, 4};
         int[] mass2 = {3, 4, 5};
