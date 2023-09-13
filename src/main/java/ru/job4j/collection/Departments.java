@@ -5,10 +5,17 @@ import java.util.*;
 public class Departments {
     public static List<String> fillGaps(List<String> deps) {
         Set<String> tmp = new LinkedHashSet<>();
-        for (String value : deps) {
+        for (String value : deps) { //первый k1/sk1/ssk1
             String start = value.split("/", 2)[0];
             for (String el : value.split("/")) {
-                tmp.add(start + "/" + el);
+                if (el.equalsIgnoreCase("k1") || el.equalsIgnoreCase("k2")) {
+                    tmp.add(start);
+                } else if (el.equalsIgnoreCase("sk1") || el.equalsIgnoreCase("sk2")) {
+                    start = start + "/" + el;
+                    tmp.add(start);
+                } else {
+                    tmp.add(start + "/" + el);
+                }
             }
         }
         return new ArrayList<>(tmp);
