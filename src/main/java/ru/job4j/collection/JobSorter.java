@@ -14,7 +14,7 @@ public class JobSorter {
         );
 
         jobs.sort(new SortByNameJob().thenComparing(new SortDescByPriorityJob()));
-        System.out.println(jobs); //сортировка методом Comparing
+        System.out.println(jobs);
 
         Comparator<Job> compareName = Comparator.comparing(Job::getName);
         Comparator<Job> comparePriority = Comparator.comparingInt(Job::getPriority);
