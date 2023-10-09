@@ -11,7 +11,7 @@ public class JobSorter {
                 new Job("Fix bug", 4),
                 new Job("Fix bug", 2),
                 new Job("X task", 0)
-        ); // Создали jobs- список задачь
+        );
 
         jobs.sort(new SortByNameJob().thenComparing(new SortDescByPriorityJob()));
         System.out.println(jobs); //сортировка методом Comparing
