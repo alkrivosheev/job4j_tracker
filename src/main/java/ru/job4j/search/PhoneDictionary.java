@@ -12,8 +12,8 @@ public class PhoneDictionary {
 
     public ArrayList<Person> find(String key) {
         ArrayList<Person> result = new ArrayList<>();
-        Predicate<Person> compName = n -> n.getName().equals(key);
-        Predicate<Person> compSurName = sn -> sn.getSurname().equals(key);
+        Predicate<Person> compName = n -> n.getName().contains(key);
+        Predicate<Person> compSurName = sn -> sn.getSurname().contains(key);
         Predicate<Person> compPhone = cp -> cp.getPhone().contains(key);
         Predicate<Person> compAddress = ca -> ca.getAddress().contains(key);
         Predicate<Person> combine = compName.or(compSurName).or(compPhone).or(compAddress);
