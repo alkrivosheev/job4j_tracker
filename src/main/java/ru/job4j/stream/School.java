@@ -5,7 +5,6 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class School {
-    @SuppressWarnings("checkstyle:NoWhitespaceBefore")
     public List<Student> collect(List<Student> students, Predicate<Student> predicate) {
         return students.stream()
                 .filter(predicate)
