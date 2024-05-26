@@ -1,8 +1,13 @@
 package ru.job4j;
 
 import org.junit.jupiter.api.Test;
-import ru.job4j.tracker.*;
 import ru.job4j.tracker.action.*;
+import ru.job4j.tracker.input.Input;
+import ru.job4j.tracker.input.StubInput;
+import ru.job4j.tracker.input.ValidateInput;
+import ru.job4j.tracker.output.ConsoleOutput;
+import ru.job4j.tracker.output.Output;
+import ru.job4j.tracker.output.StubOutput;
 
 import java.util.List;
 

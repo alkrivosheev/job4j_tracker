@@ -1,8 +1,12 @@
 package ru.job4j;
 
 
-import ru.job4j.tracker.*;
 import ru.job4j.tracker.action.*;
+import ru.job4j.tracker.input.ConsoleInput;
+import ru.job4j.tracker.input.Input;
+import ru.job4j.tracker.input.ValidateInput;
+import ru.job4j.tracker.output.ConsoleOutput;
+import ru.job4j.tracker.output.Output;
 
 import java.util.List;
 
@@ -13,7 +17,7 @@ public class StartUI {
         this.out = out;
     }
 
-    public void init(Input input, Tracker tracker,  List<UserAction> actions) {
+    public void init(Input input, Tracker tracker, List<UserAction> actions) {
         boolean run = true;
         while (run) {
             showMenu(actions);
