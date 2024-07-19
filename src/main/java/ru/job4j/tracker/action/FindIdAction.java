@@ -1,7 +1,7 @@
 package ru.job4j.tracker.action;
 
-import ru.job4j.Item;
-import ru.job4j.Tracker;
+import ru.job4j.tracker.Item;
+import ru.job4j.tracker.MemTracker;
 import ru.job4j.tracker.input.Input;
 import ru.job4j.tracker.output.Output;
 
@@ -18,7 +18,7 @@ public class FindIdAction implements UserAction {
     }
 
     @Override
-    public boolean execute(Input input, Tracker tracker) {
+    public boolean execute(Input input, MemTracker tracker) {
         out.println("=== Find item by id ===");
         int id = input.askInt("Enter id: ");
         Item item = tracker.findById(id);
