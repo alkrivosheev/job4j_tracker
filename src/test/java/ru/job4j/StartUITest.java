@@ -147,7 +147,7 @@ public class StartUITest {
                 new String[] {"0", findName, "1"}
         );
         List<UserAction> actions = List.of(
-                new FindNameAction(out),
+                new FindByNameAction(out),
                 new ExitAction(out)
         );
         new StartUI(out).init(in, tracker, actions);
@@ -175,7 +175,7 @@ public class StartUITest {
                 new String[] {"0", id, "1"}
         );
         List<UserAction> actions = List.of(
-                new FindIdAction(out),
+                new FindByIdAction(out),
                 new ExitAction(out)
         );
         new StartUI(out).init(in, tracker, actions);

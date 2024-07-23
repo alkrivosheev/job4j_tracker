@@ -1,6 +1,8 @@
 package ru.job4j;
 
 
+import ru.job4j.tracker.SqlTracker;
+import ru.job4j.tracker.Store;
 import ru.job4j.tracker.action.*;
 import ru.job4j.tracker.input.ConsoleInput;
 import ru.job4j.tracker.input.Input;
@@ -18,7 +20,7 @@ public class StartUI {
         this.out = out;
     }
 
-    public void init(Input input, MemTracker tracker, List<UserAction> actions) {
+    public void init(Input input, Store tracker, List<UserAction> actions) {
         boolean run = true;
         while (run) {
             showMenu(actions);
@@ -41,12 +43,21 @@ public class StartUI {
 
     public static void main(String[] args) {
         Output output = new ConsoleOutput();
-        Input input = new ValidateInput(output, new ConsoleInput());
-        MemTracker tracker = new MemTracker();
-        List<UserAction> actions = List.of(
-                new CreateAction(output), new ShowAction(output), new ReplaceAction(output),
-                new DeleteAction(output), new FindIdAction(output), new FindNameAction(output),
-                new ExitAction(output));
-        new StartUI(output).init(input, tracker, actions);
+        Input input = new ValidateInput(
+                output, new ConsoleInput());
+        try (Store tracker = new SqlTracker()) {
+            List<UserAction> actions = List.of(
+                    new CreateAction(output),
+                    new ReplaceAction(output),
+                    new DeleteAction(output),
+                    new FindAllAction(output),
+                    new FindByIdAction(output),
+                    new FindByNameAction(output),
+                    new ExitAction(output)
+            );
+            new StartUI(output).init(input, tracker, actions);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
