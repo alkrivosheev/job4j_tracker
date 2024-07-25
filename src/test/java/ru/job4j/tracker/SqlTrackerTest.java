@@ -57,4 +57,46 @@ public class SqlTrackerTest {
         tracker.add(item);
         assertThat(tracker.findById(item.getId())).isEqualTo(item);
     }
+
+    @Test
+    public void whenReplaceItemThenMustBeUpdated() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item = new Item("item");
+        tracker.add(item);
+        Item newItem = new Item("newItem");
+        boolean replaced = tracker.replace(item.getId(), newItem);
+        assertThat(replaced).isTrue();
+        assertThat(tracker.findById(item.getId()).getName()).isEqualTo(newItem.getName());
+    }
+
+    @Test
+    public void whenDeleteItemThenMustBeDeleted() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item = new Item("item");
+        tracker.add(item);
+        tracker.delete(item.getId());
+        assertThat(tracker.findById(item.getId())).isNull();
+    }
+
+    @Test
+    public void whenFindAllThenReturnAllItems() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item1 = new Item("item1");
+        Item item2 = new Item("item2");
+        tracker.add(item1);
+        tracker.add(item2);
+        assertThat(tracker.findAll()).containsExactlyInAnyOrder(item1, item2);
+    }
+
+    @Test
+    public void whenFindByNameThenReturnMatchingItems() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item1 = new Item("item1");
+        Item item2 = new Item("item2");
+        Item item3 = new Item("item1");
+        tracker.add(item1);
+        tracker.add(item2);
+        tracker.add(item3);
+        assertThat(tracker.findByName("item1")).containsExactlyInAnyOrder(item1, item3);
+    }
 }
