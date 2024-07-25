@@ -55,13 +55,16 @@ public class SqlTracker implements Store {
     @Override
     public Item add(Item item) {
         Timestamp timestampFromLDT = Timestamp.valueOf(item.getCreated());
-        String sql = "INSERT INTO items(name, created) VALUES (?, ?) RETURNING id";
+        String sql = "INSERT INTO items(name, created) VALUES (?, ?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, item.getName());
             preparedStatement.setTimestamp(2, timestampFromLDT);
-            ResultSet rs = preparedStatement.executeQuery();
-            if (rs.next()) {
-                item.setId(rs.getInt(1));
+            preparedStatement.execute();
+            try (PreparedStatement prepStmt = connection.prepareStatement("SELECT id FROM items ORDER BY id DESC fetch first 1 rows only;")) {
+                ResultSet rs = prepStmt.executeQuery();
+                if (rs.next()) {
+                    item.setId(rs.getInt(1));
+                }
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
