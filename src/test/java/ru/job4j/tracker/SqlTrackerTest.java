@@ -79,6 +79,19 @@ public class SqlTrackerTest {
     }
 
     @Test
+    public void whenDeleteItemThenDeletedOnlyOneItem() {
+        SqlTracker tracker = new SqlTracker(connection);
+        Item item1 = new Item("item1");
+        Item item2 = new Item("item2");
+        Item item3 = new Item("item1");
+        tracker.add(item1);
+        tracker.add(item2);
+        tracker.add(item3);
+        tracker.delete(item2.getId());
+        assertThat(tracker.findAll()).containsExactlyInAnyOrder(item1, item3);
+    }
+
+    @Test
     public void whenFindAllThenReturnAllItems() {
         SqlTracker tracker = new SqlTracker(connection);
         Item item1 = new Item("item1");
