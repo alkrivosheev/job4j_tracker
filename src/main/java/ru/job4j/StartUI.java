@@ -1,15 +1,13 @@
 package ru.job4j;
 
 
-import ru.job4j.tracker.SqlTracker;
-import ru.job4j.tracker.Store;
+import ru.job4j.tracker.*;
 import ru.job4j.tracker.action.*;
 import ru.job4j.tracker.input.ConsoleInput;
 import ru.job4j.tracker.input.Input;
 import ru.job4j.tracker.input.ValidateInput;
 import ru.job4j.tracker.output.ConsoleOutput;
 import ru.job4j.tracker.output.Output;
-import ru.job4j.tracker.MemTracker;
 
 import java.util.List;
 
@@ -47,6 +45,8 @@ public class StartUI {
                 output, new ConsoleInput());
         try (Store tracker = new SqlTracker()) {
             List<UserAction> actions = List.of(
+                    new CreateManyItems(output),
+                    new DeleteAllItems(output),
                     new CreateAction(output),
                     new ReplaceAction(output),
                     new DeleteAction(output),
