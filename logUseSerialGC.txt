@@ -1,0 +1,54 @@
+Log при следующих настройках VM
+-XX:+UseSerialGC -Xmx12m -Xms12m -Xlog:gc:log.txt:time,level,tags
+- Serial => -XX:+UseSerialGC
+
+- Parallel => -XX:+UseParallelGC
+
+- CMS => -XX:+UseConcMarkSweepGC (доступен до JDK 14)
+
+- G1 => -XX:+UseG1GC
+
+- ZGC => -XX:+UseZGC
+
+[2024-08-27T09:59:28.113+0300][info][gc] Using Serial
+[2024-08-27T09:59:29.188+0300][info][gc] GC(0) Pause Young (Allocation Failure) 3M->1M(11M) 4.166ms
+[2024-08-27T09:59:38.790+0300][info][gc] GC(1) Pause Young (Allocation Failure) 5M->2M(11M) 3.587ms
+[2024-08-27T09:59:38.977+0300][info][gc] GC(2) Pause Young (Allocation Failure) 6M->3M(11M) 4.787ms
+[2024-08-27T09:59:39.071+0300][info][gc] GC(3) Pause Young (Allocation Failure) 6M->3M(11M) 14.409ms
+[2024-08-27T09:59:43.227+0300][info][gc] GC(4) Pause Young (Allocation Failure) 6M->3M(11M) 1.579ms
+[2024-08-27T09:59:43.602+0300][info][gc] GC(5) Pause Young (Allocation Failure) 6M->4M(11M) 4.460ms
+[2024-08-27T09:59:54.802+0300][info][gc] GC(6) Pause Young (Allocation Failure) 7M->4M(11M) 2.733ms
+[2024-08-27T10:00:24.972+0300][info][gc] GC(7) Pause Young (Allocation Failure) 7M->4M(11M) 1.516ms
+[2024-08-27T10:00:56.443+0300][info][gc] GC(8) Pause Young (Allocation Failure) 7M->4M(11M) 0.673ms
+[2024-08-27T10:01:28.422+0300][info][gc] GC(9) Pause Young (Allocation Failure) 7M->4M(11M) 0.577ms
+[2024-08-27T10:01:35.329+0300][info][gc] GC(10) Pause Young (Allocation Failure) 7M->4M(11M) 0.660ms
+[2024-08-27T10:01:57.107+0300][info][gc] GC(11) Pause Young (Allocation Failure) 7M->4M(11M) 0.617ms
+[2024-08-27T10:02:28.793+0300][info][gc] GC(12) Pause Young (Allocation Failure) 7M->4M(11M) 0.628ms
+[2024-08-27T10:02:51.623+0300][info][gc] GC(13) Pause Young (Allocation Failure) 6M->4M(11M) 0.767ms
+[2024-08-27T10:03:14.023+0300][info][gc] GC(14) Pause Young (Allocation Failure) 7M->5M(11M) 1.368ms
+[2024-08-27T10:03:46.232+0300][info][gc] GC(15) Pause Young (Allocation Failure) 8M->5M(11M) 0.732ms
+[2024-08-27T10:04:17.536+0300][info][gc] GC(16) Pause Young (Allocation Failure) 8M->5M(11M) 0.829ms
+[2024-08-27T10:04:22.463+0300][info][gc] GC(17) Pause Young (Allocation Failure) 8M->6M(11M) 1.373ms
+[2024-08-27T10:04:22.479+0300][info][gc] GC(18) Pause Young (Allocation Failure) 9M->6M(11M) 0.644ms
+[2024-08-27T10:04:22.494+0300][info][gc] GC(19) Pause Young (Allocation Failure) 9M->6M(11M) 0.658ms
+[2024-08-27T10:04:22.510+0300][info][gc] GC(20) Pause Young (Allocation Failure) 9M->6M(11M) 0.477ms
+[2024-08-27T10:04:22.510+0300][info][gc] GC(21) Pause Young (Allocation Failure) 10M->7M(11M) 0.542ms
+[2024-08-27T10:04:22.510+0300][info][gc] GC(22) Pause Young (Allocation Failure) 10M->10M(11M) 0.062ms
+[2024-08-27T10:04:22.541+0300][info][gc] GC(23) Pause Full (Allocation Failure) 10M->6M(11M) 27.601ms
+[2024-08-27T10:04:22.552+0300][info][gc] GC(24) Pause Young (Allocation Failure) 10M->10M(11M) 0.048ms
+[2024-08-27T10:04:22.568+0300][info][gc] GC(25) Pause Full (Allocation Failure) 10M->7M(11M) 13.197ms
+[2024-08-27T10:04:22.568+0300][info][gc] GC(26) Pause Young (Allocation Failure) 10M->10M(11M) 0.065ms
+[2024-08-27T10:04:22.589+0300][info][gc] GC(27) Pause Full (Allocation Failure) 10M->7M(11M) 16.753ms
+[2024-08-27T10:04:23.448+0300][info][gc] GC(28) Pause Young (Allocation Failure) 10M->10M(11M) 0.059ms
+[2024-08-27T10:04:23.464+0300][info][gc] GC(29) Pause Full (Allocation Failure) 10M->4M(11M) 14.496ms
+[2024-08-27T10:04:53.001+0300][info][gc] GC(30) Pause Young (Allocation Failure) 8M->5M(11M) 0.573ms
+[2024-08-27T10:05:24.868+0300][info][gc] GC(31) Pause Young (Allocation Failure) 8M->4M(11M) 0.515ms
+[2024-08-27T10:05:47.077+0300][info][gc] GC(32) Pause Young (Allocation Failure) 8M->4M(11M) 0.579ms
+[2024-08-27T10:06:19.790+0300][info][gc] GC(33) Pause Young (Allocation Failure) 8M->4M(11M) 0.857ms
+[2024-08-27T10:06:52.044+0300][info][gc] GC(34) Pause Young (Allocation Failure) 8M->4M(11M) 0.597ms
+[2024-08-27T10:07:14.633+0300][info][gc] GC(35) Pause Young (Allocation Failure) 8M->5M(11M) 0.841ms
+[2024-08-27T10:07:47.853+0300][info][gc] GC(36) Pause Young (Allocation Failure) 9M->5M(11M) 0.598ms
+[2024-08-27T10:08:19.172+0300][info][gc] GC(37) Pause Young (Allocation Failure) 9M->5M(11M) 0.583ms
+[2024-08-27T10:08:50.579+0300][info][gc] GC(38) Pause Young (Allocation Failure) 9M->5M(11M) 0.616ms
+[2024-08-27T10:09:21.958+0300][info][gc] GC(39) Pause Young (Allocation Failure) 9M->5M(11M) 0.658ms
+[2024-08-27T10:09:52.805+0300][info][gc] GC(40) Pause Young (Allocation Failure) 9M->5M(11M) 0.694ms
