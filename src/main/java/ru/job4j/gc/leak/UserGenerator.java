@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.StringJoiner;
 
 public class UserGenerator implements Generate {
 
@@ -12,7 +13,7 @@ public class UserGenerator implements Generate {
     public static final String PATH_PATRONS = "src/main/java/ru/job4j/gc/leak/files/patr.txt";
 
     public static final String SEPARATOR = " ";
-    public static final Integer NEW_USERS = 1;
+    public static final Integer NEW_USERS = 1000;
 
     public static List<String> names;
     public static List<String> surnames;
@@ -29,10 +30,11 @@ public class UserGenerator implements Generate {
     public void generate() {
         users.clear();
         for (int i = 0; i < NEW_USERS; i++) {
-            users.add(new User(
-                    surnames.get(random.nextInt(surnames.size())) + SEPARATOR
-                            + names.get(random.nextInt(names.size())) + SEPARATOR
-                            + patrons.get(random.nextInt(patrons.size()))));
+            StringJoiner nameJoiner = new StringJoiner(SEPARATOR);
+            nameJoiner.add(surnames.get(random.nextInt(surnames.size())));
+            nameJoiner.add(names.get(random.nextInt(names.size())));
+            nameJoiner.add(patrons.get(random.nextInt(patrons.size())));
+            users.add(new User(nameJoiner.toString()));
         }
     }
 
