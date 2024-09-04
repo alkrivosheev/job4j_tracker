@@ -1,7 +1,6 @@
 package ru.job4j.cache;
 
-import org.jetbrains.annotations.Nullable;
-
+import javax.annotation.Nullable;
 import java.lang.ref.SoftReference;
 import java.util.HashMap;
 import java.util.Map;
