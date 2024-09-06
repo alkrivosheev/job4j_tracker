@@ -3,13 +3,13 @@ package ru.job4j;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class Battlefield {
+public class BattleShip {
 
     private static final int[][] DIRECTIONS = {
             {0, 1}, {1, 0}, {0, -1}, {-1, 0}
     };
 
-    public int countShips(int[][] sea) {
+    public int countAliveShips(int[][] sea) {
         int shipCount = 0;
         int rows = sea.length;
         int cols = sea[0].length;

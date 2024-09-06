@@ -7,37 +7,64 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class BattlefieldTest {
+
     @Test
-    public void whenOneVertShip() {
-        int[][] input = {
-                {0, 1, 0, 0},
-                {0, 1, 0, 0}
+    public void testCountAliveShips() {
+        BattleShip battleShip = new BattleShip();
+        int[][] sea = {
+                {1, 1, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 1, 1, 1, 1, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 1},
+                {0, 0, 0, 1, 0, 0, 0, 0, 0, 1},
+                {0, 0, 0, 1, 0, 1, 1, 1, 0, 1},
+                {0, 0, 0, 1, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 1, 0, 0, 0, 0},
+                {0, 0, 1, 1, 0, 1, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 1, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 1, 0, 0, 1, 1},
         };
-        Battlefield bf = new Battlefield();
-        Assertions.assertThat(bf.countShips(input)).isEqualTo(1);
+
+        int result = battleShip.countAliveShips(sea);
+        assertEquals(8, result); // Ожидаем, что на поле 7 кораблей
     }
 
     @Test
-    public void whenTwoShips() {
-        int[][] input = {
-                {0, 1, 0, 0},
-                {0, 1, 0, 0},
-                {0, 0, 0, 0},
-                {0, 1, 1, 1}
+    public void testEmptySea() {
+        BattleShip battleShip = new BattleShip();
+        int[][] sea = {
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
         };
-        Battlefield bf = new Battlefield();
-        Assertions.assertThat(bf.countShips(input)).isEqualTo(2);
+
+        int result = battleShip.countAliveShips(sea);
+        assertEquals(0, result); // Ожидаем, что на поле 0 кораблей
     }
 
     @Test
-    public void whenThreeShips() {
-        int[][] input = {
-                {0, 1, 0, 1},
-                {0, 1, 0, 1},
-                {0, 0, 0, 0},
-                {0, 1, 1, 1}
+    public void testSingleShip() {
+        BattleShip battleShip = new BattleShip();
+        int[][] sea = {
+                {1, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0, 0, 0, 0, 0, 0},
         };
-        Battlefield bf = new Battlefield();
-        Assertions.assertThat(bf.countShips(input)).isEqualTo(3);
+
+        int result = battleShip.countAliveShips(sea);
+        assertEquals(1, result); // Ожидаем, что на поле 1 корабль
     }
 }
