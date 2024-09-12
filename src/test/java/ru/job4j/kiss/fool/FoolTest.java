@@ -7,7 +7,6 @@ class FoolTest {
 
     @Test
     void whenNumberDivisibleBy3And5ThenFizzBuzz() {
-
         assertEquals("FizzBuzz", Fool.getFizzBuzzValue(15));
         assertEquals("FizzBuzz", Fool.getFizzBuzzValue(30));
         assertEquals("FizzBuzz", Fool.getFizzBuzzValue(45));

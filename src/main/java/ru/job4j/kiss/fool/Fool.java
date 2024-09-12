@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Fool {
 
     public static void main(String[] args) {
-        System.out.println("Игра FizzBuzz.");
+        System.out.println("Игра FizzBuzz. ");
         var startAt = 1;
         var input = new Scanner(System.in);
         while (startAt < 100) {
@@ -14,7 +14,7 @@ public class Fool {
             var userAnswer = input.nextLine();
             startAt++;
             if (!getFizzBuzzValue(startAt).equals(userAnswer)) {
-                System.out.println("Ошибка. Начинай снова.");
+                System.out.println("Ошибка. Начинай снова. ");
                 startAt = 0;
             }
             startAt++;
