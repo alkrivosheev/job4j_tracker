@@ -8,9 +8,7 @@ public class Fool {
         System.out.println("Игра FizzBuzz.");
         var startAt = 1;
         var input = new Scanner(System.in);
-
         while (startAt < 100) {
-
             String correctAnswer = getFizzBuzzValue(startAt);
             System.out.println(correctAnswer);
             var userAnswer = input.nextLine();
