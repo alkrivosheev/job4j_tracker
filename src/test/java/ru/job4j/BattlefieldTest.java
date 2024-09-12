@@ -25,7 +25,7 @@ public class BattlefieldTest {
         };
 
         int result = battleShip.countAliveShips(sea);
-        assertEquals(8, result); // Ожидаем, что на поле 7 кораблей
+        assertEquals(8, result);
     }
 
     @Test
@@ -45,7 +45,7 @@ public class BattlefieldTest {
         };
 
         int result = battleShip.countAliveShips(sea);
-        assertEquals(0, result); // Ожидаем, что на поле 0 кораблей
+        assertEquals(0, result);
     }
 
     @Test
@@ -65,6 +65,6 @@ public class BattlefieldTest {
         };
 
         int result = battleShip.countAliveShips(sea);
-        assertEquals(1, result); // Ожидаем, что на поле 1 корабль
+        assertEquals(1, result);
     }
 }
