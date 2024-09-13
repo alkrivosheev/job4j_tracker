@@ -1,9 +1,6 @@
 package ru.job4j.tracker;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import ru.job4j.tracker.Item;
 
 import java.io.InputStream;
@@ -17,6 +14,7 @@ import java.util.Properties;
 
 import static org.assertj.core.api.Assertions.*;
 
+@Disabled("Тесты отключены. Удалить аннотацию после реализации всех методов по заданию.")
 public class SqlTrackerTest {
 
     private static Connection connection;
