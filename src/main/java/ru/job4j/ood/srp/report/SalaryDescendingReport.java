@@ -20,10 +20,7 @@ public class SalaryDescendingReport implements Report {
         StringBuilder text = new StringBuilder();
         text.append("Name; Salary;").append(System.lineSeparator());
         List<Employee> employees = store.findBy(filter);
-
-        // Сортировка по зарплате в порядке убывания
         employees.sort(Comparator.comparingDouble(Employee::getSalary).reversed());
-
         for (Employee employee : employees) {
             text.append(employee.getName()).append(" ")
                     .append(employee.getSalary())
