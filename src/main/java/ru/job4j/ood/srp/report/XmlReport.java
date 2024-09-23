@@ -26,7 +26,7 @@ public class XmlReport implements Report {
     static class EmployeeSerializer {
         public String xmlSerialize(Employees employees) throws JAXBException {
             String res = "";
-            JAXBContext context = JAXBContext.newInstance(Employees.class); // Изменили контекст для работы с Employees
+            JAXBContext context = JAXBContext.newInstance(Employees.class);
             Marshaller marshaller = context.createMarshaller();
             marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
             try (StringWriter writer = new StringWriter()) {
@@ -61,10 +61,10 @@ public class XmlReport implements Report {
         EmployeeSerializer xmlSer = new EmployeeSerializer();
 
         List<Employee> employees = store.findBy(filter);
-        Employees employeesContainer = new Employees(employees); // Создаем контейнер Employees
+        Employees employeesContainer = new Employees(employees);
 
         try {
-            res.append(xmlSer.xmlSerialize(employeesContainer)); // Сериализуем контейнер
+            res.append(xmlSer.xmlSerialize(employeesContainer));
         } catch (JAXBException e) {
             throw new RuntimeException(e);
         }
