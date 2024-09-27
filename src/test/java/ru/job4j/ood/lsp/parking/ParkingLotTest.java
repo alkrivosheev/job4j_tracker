@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@Disabled
+
 class ParkingLotTest {
 
     @Test
@@ -41,6 +41,7 @@ class ParkingLotTest {
     @Test
     public void testParkTruckFailsIfNotEnoughCarSpots() {
         ParkingLot parkingLot = new ParkingLot(3, 1);
+        parkingLot.parkVehicle(new Truck(3));
         Vehicle truck = new Truck(4);
 
         boolean result = parkingLot.parkVehicle(truck);
