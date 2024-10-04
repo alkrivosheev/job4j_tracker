@@ -1,5 +1,5 @@
 package ru.job4j.ood.lsp.parking;
 
-interface Vehicle {
+public interface Vehicle {
     int getSize();
 }
