@@ -121,4 +121,28 @@ class ControlQualityTest {
         assertFalse(shop.getFoodStorage().contains(food));
         assertTrue(trash.getFoodStorage().contains(food));
     }
+
+    @Test
+    public void whenResortThenProductsRedistributedCorrectly() {
+        Food milk = new Food("Milk", LocalDate.now().plusDays(90), LocalDate.now().minusDays(10), 50, 0);
+        Food cheese = new Food("Cheese", LocalDate.now().plusDays(5), LocalDate.now().minusDays(85), 100, 0.2);
+        Food yogurt = new Food("Yogurt", LocalDate.now().minusDays(2), LocalDate.now().minusDays(20), 30, 0);
+
+        Warehouse warehouse = new Warehouse();
+        Shop shop = new Shop();
+        Trash trash = new Trash();
+
+        ControlQuality controlQuality = new ControlQuality(Arrays.asList(warehouse, shop, trash));
+        controlQuality.redistribute(milk);
+        controlQuality.redistribute(cheese);
+        controlQuality.redistribute(yogurt);
+        assertTrue(warehouse.getFoodStorage().contains(milk));
+        assertTrue(shop.getFoodStorage().contains(cheese));
+        assertTrue(trash.getFoodStorage().contains(yogurt));
+        controlQuality.resort();
+        assertTrue(warehouse.getFoodStorage().contains(milk));
+        assertTrue(shop.getFoodStorage().contains(cheese));
+        assertTrue(trash.getFoodStorage().contains(yogurt));
+    }
+
 }
