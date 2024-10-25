@@ -12,8 +12,8 @@ public class QuickList {
     private static <T> void quickSort(List<T> sequence, int start, int end, Comparator<T> comparator) {
         if (start < end) {
             int pivotIndex = breakPartition(sequence, start, end, comparator);
-            quickSort(sequence, start, pivotIndex - 1, comparator); // Sort left partition
-            quickSort(sequence, pivotIndex + 1, end, comparator);   // Sort right partition
+            quickSort(sequence, start, pivotIndex - 1, comparator);
+            quickSort(sequence, pivotIndex + 1, end, comparator);
         }
     }
 
