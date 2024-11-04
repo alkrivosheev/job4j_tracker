@@ -20,6 +20,10 @@ public class Node<E> {
         return children;
     }
 
+    public void setChildren(List<Node<E>> children) {
+        this.children = children;
+    }
+
     @SafeVarargs
     public Node(E value, Node<E>... children) {
         this.value = value;
