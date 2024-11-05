@@ -107,6 +107,7 @@ public class BinarySearchTreeTest {
         assertThat(tree.inSymmetricalOrder()).hasSize(1)
                 .containsExactly(1);
     }
+
     @Test
     void whenRemoveLeafNodeThenNodeIsRemoved() {
         BinarySearchTree<Integer> tree = new BinarySearchTree<>();
