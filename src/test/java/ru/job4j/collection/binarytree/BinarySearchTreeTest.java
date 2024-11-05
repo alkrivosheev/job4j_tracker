@@ -251,4 +251,64 @@ public class BinarySearchTreeTest {
         assertThat(tree.inSymmetricalOrder()).hasSize(1)
                 .containsExactly(15);
     }
+
+    @Test
+    void whenClearEmptyTreeThenTreeRemainsEmpty() {
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+        tree.clear();
+        assertThat(tree.inSymmetricalOrder()).isEmpty();
+        assertThat(tree.inPreOrder()).isEmpty();
+        assertThat(tree.inPostOrder()).isEmpty();
+        assertThat(tree.minimum()).isNull();
+        assertThat(tree.maximum()).isNull();
+    }
+
+    @Test
+    void whenClearTreeWithSingleElementThenTreeIsEmpty() {
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+        tree.put(10);
+        tree.clear();
+        assertThat(tree.inSymmetricalOrder()).isEmpty();
+        assertThat(tree.inPreOrder()).isEmpty();
+        assertThat(tree.inPostOrder()).isEmpty();
+        assertThat(tree.minimum()).isNull();
+        assertThat(tree.maximum()).isNull();
+    }
+
+    @Test
+    void whenClearTreeWithMultipleElementsThenTreeIsEmpty() {
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+        tree.put(5);
+        tree.put(3);
+        tree.put(7);
+        tree.put(2);
+        tree.put(4);
+        tree.put(6);
+        tree.put(8);
+        assertThat(tree.inSymmetricalOrder()).hasSize(7)
+                .containsExactly(2, 3, 4, 5, 6, 7, 8);
+        tree.clear();
+        assertThat(tree.inSymmetricalOrder()).isEmpty();
+        assertThat(tree.inPreOrder()).isEmpty();
+        assertThat(tree.inPostOrder()).isEmpty();
+        assertThat(tree.minimum()).isNull();
+        assertThat(tree.maximum()).isNull();
+    }
+
+    @Test
+    void whenClearCalledMultipleTimesThenTreeRemainsEmpty() {
+        BinarySearchTree<Integer> tree = new BinarySearchTree<>();
+        tree.put(5);
+        tree.put(3);
+        tree.put(7);
+        tree.clear();
+        assertThat(tree.inSymmetricalOrder()).isEmpty();
+        assertThat(tree.minimum()).isNull();
+        tree.clear();
+        assertThat(tree.inSymmetricalOrder()).isEmpty();
+        assertThat(tree.inPreOrder()).isEmpty();
+        assertThat(tree.inPostOrder()).isEmpty();
+        assertThat(tree.minimum()).isNull();
+        assertThat(tree.maximum()).isNull();
+    }
 }

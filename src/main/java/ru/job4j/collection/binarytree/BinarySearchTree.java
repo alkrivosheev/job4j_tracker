@@ -200,6 +200,21 @@ public class BinarySearchTree<T extends Comparable<T>> {
         return PrintTree.getTreeDisplay(root);
     }
 
+    public void clear() {
+        clear(root);
+        root = null;
+    }
+
+    private void clear(Node first) {
+        if (first != null) {
+            clear(first.left);
+            clear(first.right);
+            first.left = null;
+            first.right = null;
+            first.key = null;
+        }
+    }
+
     private class Node implements VisualNode {
         private T key;
         private Node left;
