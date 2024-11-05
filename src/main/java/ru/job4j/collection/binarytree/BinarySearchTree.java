@@ -19,7 +19,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
     private boolean put(Node node, T key) {
         int comparison = key.compareTo(node.key);
         if (comparison == 0) {
-            return false; // Duplicate key, not added
+            return false;
         } else if (comparison < 0) {
             if (node.left == null) {
                 node.left = new Node(key);
