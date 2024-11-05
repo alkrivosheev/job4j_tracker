@@ -103,7 +103,7 @@ public class BinarySearchTreeTest {
     void whenAddDuplicateThenReturnFalse() {
         BinarySearchTree<Integer> tree = new BinarySearchTree<>();
         assertThat(tree.put(1)).isTrue();
-        assertThat(tree.put(1)).isFalse();  // Duplicate element
+        assertThat(tree.put(1)).isFalse();
         assertThat(tree.inSymmetricalOrder()).hasSize(1)
                 .containsExactly(1);
     }
@@ -114,7 +114,7 @@ public class BinarySearchTreeTest {
         tree.put(5);
         tree.put(3);
         tree.put(7);
-        assertThat(tree.remove(3)).isTrue(); // Removing leaf node
+        assertThat(tree.remove(3)).isTrue();
         assertThat(tree.inSymmetricalOrder()).hasSize(2)
                 .containsExactly(5, 7);
     }
@@ -125,7 +125,7 @@ public class BinarySearchTreeTest {
         tree.put(5);
         tree.put(3);
         tree.put(2);
-        assertThat(tree.remove(3)).isTrue(); // Removing node with one child
+        assertThat(tree.remove(3)).isTrue();
         assertThat(tree.inSymmetricalOrder()).hasSize(2)
                 .containsExactly(2, 5);
     }
@@ -138,7 +138,7 @@ public class BinarySearchTreeTest {
         tree.put(7);
         tree.put(2);
         tree.put(4);
-        assertThat(tree.remove(3)).isTrue(); // Removing node with two children
+        assertThat(tree.remove(3)).isTrue();
         assertThat(tree.inSymmetricalOrder()).hasSize(4)
                 .containsExactly(2, 4, 5, 7);
     }
@@ -151,7 +151,7 @@ public class BinarySearchTreeTest {
         tree.put(7);
         tree.put(2);
         tree.put(4);
-        assertThat(tree.remove(5)).isTrue(); // Removing root with two children
+        assertThat(tree.remove(5)).isTrue();
         assertThat(tree.inSymmetricalOrder()).hasSize(4)
                 .containsExactly(2, 3, 4, 7);
     }
@@ -162,7 +162,7 @@ public class BinarySearchTreeTest {
         tree.put(5);
         tree.put(3);
         tree.put(7);
-        assertThat(tree.remove(10)).isFalse(); // Element does not exist
+        assertThat(tree.remove(10)).isFalse();
     }
 
     @Test
