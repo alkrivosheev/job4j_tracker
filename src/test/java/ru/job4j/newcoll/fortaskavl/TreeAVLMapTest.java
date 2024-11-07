@@ -90,7 +90,7 @@ public class TreeAVLMapTest {
     void whenAddDuplicateKeyThenNoChange() {
         TreeAVLMap<Integer, String> tree = new TreeAVLMap<>();
         tree.put(1, "11");
-        assertThat(tree.put(1, "11")).isTrue(); // Обновление должно быть true, но без изменения размера
+        assertThat(tree.put(1, "11")).isTrue();
         assertThat(tree.values()).hasSize(1).containsExactly("11");
         assertThat(tree.keySet()).hasSize(1).containsExactly(1);
     }
