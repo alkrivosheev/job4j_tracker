@@ -33,7 +33,7 @@ public class Worker {
         return name;
     }
 
-    public static void WorkerHierarchy(List<Worker> workers) {
+    public static void workerHierarchy(List<Worker> workers) {
         workerMap = new HashMap<>();
         hierarchyMap = new HashMap<>();
         for (Worker worker : workers) {
@@ -67,7 +67,6 @@ public class Worker {
         queue.add(workerId);
         while (!queue.isEmpty()) {
             int currentManagerId = queue.poll();
-
             List<Integer> subworkerIds = hierarchyMap.get(currentManagerId);
             if (subworkerIds != null) {
                 for (int subworkerId : subworkerIds) {
@@ -79,7 +78,6 @@ public class Worker {
         return subworkers;
     }
 
-
     public static void main(String[] args) {
         List<Worker> workers = List.of(
                 new Worker(1, "Директор Аркадий", -1),
@@ -87,12 +85,12 @@ public class Worker {
                 new Worker(3, "Инженер1 Василий", 2),
                 new Worker(4, "Инженер2 Екатерина", 2)
         );
-        Worker.WorkerHierarchy(workers);
+        Worker.workerHierarchy(workers);
         System.out.println("------------Руководители Екатерины---------------");
-        List<Worker> managers = Worker.findManagers( 4);
+        List<Worker> managers = Worker.findManagers(4);
         managers.forEach(manager -> System.out.println(manager.name));
         System.out.println("---------------Подчиненные Аркадия--------------");
-        List<Worker> subworkers = Worker.countSubworkers( 1);
+        List<Worker> subworkers = Worker.countSubworkers(1);
         subworkers.forEach(subworker -> System.out.println(subworker.name));
     }
 }
