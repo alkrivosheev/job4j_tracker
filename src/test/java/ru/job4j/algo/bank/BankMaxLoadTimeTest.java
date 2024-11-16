@@ -14,7 +14,6 @@ public class BankMaxLoadTimeTest {
                 new int[]{3, 8},
                 new int[]{4, 7}
         );
-
         int[] result = BankMaxLoadTime.findMaxLoadTime(visitTimes);
         assertThat(result).containsExactly(4, 5);
     }
@@ -27,7 +26,6 @@ public class BankMaxLoadTimeTest {
                 new int[]{5, 8},
                 new int[]{7, 12}
         );
-
         int[] result = BankMaxLoadTime.findMaxLoadTime(visitTimes);
         assertThat(result).containsExactly(5, 6);
     }
@@ -39,7 +37,6 @@ public class BankMaxLoadTimeTest {
                 new int[]{3, 4},
                 new int[]{5, 6}
         );
-
         int[] result = BankMaxLoadTime.findMaxLoadTime(visitTimes);
         assertThat(result).containsExactly(1, 2);
     }
@@ -54,7 +51,6 @@ public class BankMaxLoadTimeTest {
                 new int[]{5, 7},
                 new int[]{6, 8}
         );
-
         int[] result = BankMaxLoadTime.findMaxLoadTime(visitTimes);
         assertThat(result).containsExactly(3, 3);
     }
