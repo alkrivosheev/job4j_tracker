@@ -2,7 +2,6 @@ package ru.job4j.lombok;
 
 import lombok.*;
 
-
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Category {
     @Getter
