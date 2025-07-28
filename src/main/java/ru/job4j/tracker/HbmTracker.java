@@ -1,5 +1,6 @@
 package ru.job4j.tracker;
 
+import lombok.extern.slf4j.Slf4j;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
@@ -8,6 +9,7 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
 import java.util.List;
 
+@Slf4j
 public class HbmTracker implements Store, AutoCloseable {
     private final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
             .configure().build();
@@ -16,19 +18,18 @@ public class HbmTracker implements Store, AutoCloseable {
 
     @Override
     public Item add(Item item) {
-        Session session = sf.openSession();
-        session.beginTransaction();
-        session.save(item);
-        session.getTransaction().commit();
-        session.close();
-        return item;
+        try (Session session = sf.openSession()) {
+            session.beginTransaction();
+            session.save(item);
+            session.getTransaction().commit();
+            return item;
+        }
     }
 
     @Override
     public boolean replace(int id, Item item) {
-        Session session = sf.openSession();
         boolean isUpdated = false;
-        try {
+        try (Session session = sf.openSession()) {
             session.beginTransaction();
             int updatedCount = session.createQuery(
                             "UPDATE Item SET name = :fName WHERE id = :fId")
@@ -38,15 +39,14 @@ public class HbmTracker implements Store, AutoCloseable {
             session.getTransaction().commit();
             isUpdated = updatedCount > 0;
         } catch (Exception e) {
-            session.getTransaction().rollback();
+            log.error("Failed to replace item with id={}. Error: {}", id, e.getMessage(), e);
         }
         return isUpdated;
     }
 
     @Override
     public void delete(int id) {
-        Session session = sf.openSession();
-        try {
+        try (Session session = sf.openSession()) {
             session.beginTransaction();
             session.createQuery(
                             "DELETE Item WHERE id = :fId")
@@ -54,7 +54,7 @@ public class HbmTracker implements Store, AutoCloseable {
                     .executeUpdate();
             session.getTransaction().commit();
         } catch (Exception e) {
-            session.getTransaction().rollback();
+            log.error("Failed to delete item with id={}.", id, e);
         }
     }
 
