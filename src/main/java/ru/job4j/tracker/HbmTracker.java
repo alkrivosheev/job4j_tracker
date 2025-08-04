@@ -20,9 +20,15 @@ public class HbmTracker implements Store, AutoCloseable {
     public Item add(Item item) {
         try (Session session = sf.openSession()) {
             session.beginTransaction();
-            session.save(item);
-            session.getTransaction().commit();
-            return item;
+            try {
+                session.save(item);
+                session.getTransaction().commit();
+                return item;
+            } catch (Exception e) {
+                session.getTransaction().rollback();
+                log.error("Failed to add item. Error: {}", e.getMessage(), e);
+                throw e;
+            }
         }
     }
 
@@ -31,15 +37,19 @@ public class HbmTracker implements Store, AutoCloseable {
         boolean isUpdated = false;
         try (Session session = sf.openSession()) {
             session.beginTransaction();
-            int updatedCount = session.createQuery(
-                            "UPDATE Item SET name = :fName WHERE id = :fId")
-                    .setParameter("fName", item.getName())
-                    .setParameter("fId", id)
-                    .executeUpdate();
-            session.getTransaction().commit();
-            isUpdated = updatedCount > 0;
-        } catch (Exception e) {
-            log.error("Failed to replace item with id={}. Error: {}", id, e.getMessage(), e);
+            try {
+                int updatedCount = session.createQuery(
+                                "UPDATE Item SET name = :fName WHERE id = :fId")
+                        .setParameter("fName", item.getName())
+                        .setParameter("fId", id)
+                        .executeUpdate();
+                session.getTransaction().commit();
+                isUpdated = updatedCount > 0;
+            } catch (Exception e) {
+                session.getTransaction().rollback();
+                log.error("Failed to replace item with id={}. Error: {}", id, e.getMessage(), e);
+                throw e;
+            }
         }
         return isUpdated;
     }
@@ -48,13 +58,17 @@ public class HbmTracker implements Store, AutoCloseable {
     public void delete(int id) {
         try (Session session = sf.openSession()) {
             session.beginTransaction();
-            session.createQuery(
-                            "DELETE Item WHERE id = :fId")
-                    .setParameter("fId", id)
-                    .executeUpdate();
-            session.getTransaction().commit();
-        } catch (Exception e) {
-            log.error("Failed to delete item with id={}.", id, e);
+            try {
+                session.createQuery(
+                                "DELETE Item WHERE id = :fId")
+                        .setParameter("fId", id)
+                        .executeUpdate();
+                session.getTransaction().commit();
+            } catch (Exception e) {
+                session.getTransaction().rollback();
+                log.error("Failed to delete item with id={}.", id, e);
+                throw e;
+            }
         }
     }
 
