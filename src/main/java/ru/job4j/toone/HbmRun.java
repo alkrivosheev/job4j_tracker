@@ -14,16 +14,32 @@ public class HbmRun {
                 .configure().build();
         try {
             SessionFactory sf = new MetadataSources(registry).buildMetadata().buildSessionFactory();
+
             var role = new Role();
             role.setName("ADMIN");
             create(role, sf);
+
             var user = new User();
             user.setName("Admin Admin");
             user.setRole(role);
+
+            var messenger1 = new UserMessenger("tg", "@tg");
+            var messenger2 = new UserMessenger("wu", "@wu");
+
+            user.addMessenger(messenger1);
+            user.addMessenger(messenger2);
+
             create(user, sf);
-            findAll(User.class, sf)
-                    .forEach(System.out::println);
-        }  catch (Exception e) {
+
+            var stored = sf.openSession()
+                    .createQuery("FROM User WHERE name = :userName", User.class)
+                    .setParameter("userName", "Admin Admin")
+                    .getSingleResult();
+
+            System.out.println("Created user: " + stored);
+            stored.getMessengers().forEach(System.out::println);
+
+        } catch (Exception e) {
             e.printStackTrace();
         } finally {
             StandardServiceRegistryBuilder.destroy(registry);

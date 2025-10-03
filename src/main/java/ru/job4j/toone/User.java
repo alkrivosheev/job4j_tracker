@@ -5,6 +5,9 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.EqualsAndHashCode.Include;
 
+import java.util.List;
+import java.util.ArrayList;
+
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
@@ -20,4 +23,16 @@ public class User {
     @ManyToOne
     @JoinColumn(name = "role_id")
     private Role role;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
+
+    private List<UserMessenger> messengers = new ArrayList<>();
+
+    public void addMessenger(UserMessenger messenger) {
+        if (this.messengers == null) {
+            this.messengers = new ArrayList<>();
+        }
+        this.messengers.add(messenger);
+        messenger.setUser(this);
+    }
 }
