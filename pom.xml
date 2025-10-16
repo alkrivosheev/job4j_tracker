@@ -26,9 +26,6 @@
         </profile>
         <profile>
             <id>production</id>
-<!--            <properties>-->
-<!--                <liquibase.config>src/main/resources/db/liquibase.properties</liquibase.config>-->
-<!--            </properties>-->
             <build>
                 <plugins>
                     <plugin>
@@ -37,8 +34,7 @@
                         <version>4.28.0</version>
                         <configuration>
                             <propertyFile>src/main/resources/db/liquibase.properties</propertyFile>
-
-                            <changeLogFile>src/main/resources/db/dbchangelog.xml</changeLogFile>
+                            <!-- changeLogFile уже указан в liquibase.properties -->
                         </configuration>
                         <executions>
                             <execution>
@@ -159,23 +155,8 @@
     </dependencies>
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.liquibase</groupId>
-                <artifactId>liquibase-maven-plugin</artifactId>
-                <version>4.28.0</version>
-                <configuration>
-                    <propertyFile>${liquibase.config}</propertyFile>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>clearCheckSums</goal>
-                            <goal>update</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
+            <!-- Liquibase Maven Plugin УДАЛЕН ИЗ ОСНОВНОЙ СЕКЦИИ -->
+            <!-- Он определяется ТОЛЬКО в профиле production -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
