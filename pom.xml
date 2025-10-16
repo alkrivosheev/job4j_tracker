@@ -34,6 +34,7 @@
                         <version>4.28.0</version>
                         <configuration>
                             <propertyFile>src/main/resources/db/liquibase.properties</propertyFile>
+                            <!-- changeLogFile уже указан в liquibase.properties -->
                         </configuration>
                         <executions>
                             <execution>
@@ -154,6 +155,8 @@
     </dependencies>
     <build>
         <plugins>
+            <!-- Liquibase Maven Plugin УДАЛЕН ИЗ ОСНОВНОЙ СЕКЦИИ -->
+            <!-- Он определяется ТОЛЬКО в профиле production -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
