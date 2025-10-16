@@ -26,9 +26,27 @@
         </profile>
         <profile>
             <id>production</id>
-            <properties>
-                <liquibase.config>src/main/resources/db/liquibase.properties</liquibase.config>
-            </properties>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.liquibase</groupId>
+                        <artifactId>liquibase-maven-plugin</artifactId>
+                        <version>4.28.0</version>
+                        <configuration>
+                            <propertyFile>src/main/resources/db/liquibase.properties</propertyFile>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>process-resources</phase>
+                                <goals>
+                                    <goal>clearCheckSums</goal>
+                                    <goal>update</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
         </profile>
     </profiles>
     <dependencies>
@@ -114,13 +132,13 @@
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
-            <version>5.3.1</version> <!-- или актуальная версия -->
+            <version>5.3.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-junit-jupiter</artifactId>
-            <version>5.3.1</version> <!-- или актуальная версия -->
+            <version>5.3.1</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -136,23 +154,6 @@
     </dependencies>
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.liquibase</groupId>
-                <artifactId>liquibase-maven-plugin</artifactId>
-                <version>4.28.0</version>
-                <configuration>
-                    <propertyFile>${liquibase.config}</propertyFile>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>process-resources</phase>
-                        <goals>
-                            <goal>clearCheckSums</goal>
-                            <goal>update</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
