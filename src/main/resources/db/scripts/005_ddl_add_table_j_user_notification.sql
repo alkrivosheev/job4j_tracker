@@ -1,4 +1,4 @@
-CREATE TABLE j_user_notification (
+CREATE TABLE IF NOT EXISTS j_user_notification (
                                      id SERIAL PRIMARY KEY,
                                      messenger TEXT,
                                      identify TEXT,
