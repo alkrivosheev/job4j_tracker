@@ -74,7 +74,7 @@ public class HbmTracker implements Store, AutoCloseable {
     @Override
     public List<Item> findAll() {
         try (Session session = sf.openSession()) {
-            return session.createQuery("FROM Item ", Item.class)
+            return session.createQuery("SELECT DISTINCT i FROM Item i LEFT JOIN FETCH i.participates", Item.class)
                     .list();
         }
     }

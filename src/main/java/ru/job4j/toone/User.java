@@ -4,6 +4,7 @@ import javax.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.EqualsAndHashCode.Include;
+import ru.job4j.tracker.Item;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -27,6 +28,9 @@ public class User {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "user")
 
     private List<UserMessenger> messengers = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "participates")
+    private List<Item> items = new ArrayList<>();
 
     public void addMessenger(UserMessenger messenger) {
         if (this.messengers == null) {
