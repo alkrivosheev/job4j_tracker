@@ -26,9 +26,9 @@
         </profile>
         <profile>
             <id>production</id>
-            <properties>
-                <liquibase.config>src/main/resources/db/liquibase.properties</liquibase.config>
-            </properties>
+<!--            <properties>-->
+<!--                <liquibase.config>src/main/resources/db/liquibase.properties</liquibase.config>-->
+<!--            </properties>-->
             <build>
                 <plugins>
                     <plugin>
